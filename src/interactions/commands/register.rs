@@ -34,8 +34,6 @@ pub async fn post_commands(bot: Arc<StarboardBot>) {
         chat::xproles::XPRoles,
         chat::posroles::PosRoles,
         chat::utils::Utils,
-        chat::premium::Premium,
-        chat::premium_locks::PremiumLocks,
     );
 
     match inter_client.set_global_commands(&commands).await {

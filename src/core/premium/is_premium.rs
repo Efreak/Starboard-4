@@ -1,4 +1,4 @@
-use crate::{client::bot::StarboardBot, database::DbGuild, errors::StarboardResult};
+use crate::{client::bot::StarboardBot, errors::StarboardResult};
 
 pub async fn is_guild_premium(
     bot: &StarboardBot,
@@ -14,11 +14,7 @@ pub async fn is_guild_premium(
         };
     }
 
-    let is_premium = if let Some(guild) = DbGuild::get(&bot.pool, guild_id).await? {
-        guild.premium_end.is_some()
-    } else {
-        false
-    };
+    let is_premium = true;
 
     bot.cache.guild_premium.insert(guild_id, is_premium);
     Ok(is_premium)
