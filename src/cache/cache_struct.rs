@@ -366,7 +366,10 @@ impl Cache {
                 }
             }
             Ok(msg) => {
-                let msg = msg.model().await?;
+		let mut msg = msg.model().await?;
+		if let Some(inter) = &msg.interaction {
+		    msg.author = inter.user.clone();
+		}
                 self.users
                     .insert(msg.author.id, Some(Arc::new((&msg.author).into())))
                     .await;
