@@ -1,3 +1,5 @@
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
 pub mod cache;
 pub mod client;
 pub mod constants;
